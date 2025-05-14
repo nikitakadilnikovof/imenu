@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>menu-en</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/menu.css">
+    <script type="module" src="./js/getStor.js"></script>
+    <script type="module" src="./js/main.js" defer></script>
+
+</head> 
+<body>
+    <div class="plelouder">
+        <img src="./img/logo.png" alt="">
+    </div>
+    <nav>
+        <div class="nav__links">
+            <a href="./menu-tr.html">TR</a>
+            <hr>
+            <a href="./menu-ru.html">RU</a>
+        </div>
+        <div class="nav__buttons">
+            <button id="basketButtonOpen"><i class="fa-solid fa-basket-shopping"></i></button>
+            <button id="basketButtonClouse"><i class="fa-solid fa-reply"></i></button>
+        </div>
+    </nav>
+    <div class="category-list">
+    </div>
+    <div class="menu-list">
+    </div>
+    <div class="basket-box">
+        <button class="basket-box__order-button" id="buttonOpenOrderList">
+            <span id="youOrder"></span>
+            <span id="orderIdToHTML"></span>
+        </button>
+        <h3 id="basketTitle"></h3>
+        <div class="basket-box__total-cost">
+            <span id="bsketBoxTotalCostText"></span>
+            <span id="basketBoxTotalCostNumber"></span>
+        </div>
+        <div class="basket-list">
+        </div>
+        <button id="buttonSendOrder" class="button-order"></button>
+    </div>
+    <div id="orderBoxDiv" class="order-box">
+        <button class="order-box__button-clouse">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="order-box__total-cost">
+            <span id="orderBoxTotalCostText"></span>
+            <span id="orderBoxTotalCostNumber"></span>
+        </div>
+        <div class="order-list">
+            <div class="order-card">
+            
+            </div>
+        </div>
+        <button id="buttonPayOrder"></button>
+    </div>
+    <div class="wrapper">
+        <div class="dialog-box">
+           
+        </div>
+    </div>
+    <footer><a target="_blank" id="footerReviewText" href="https://maps.app.goo.gl/T9Lsrvw6TqNyg9XSA"></a></footer>
+</body>
+</html>
