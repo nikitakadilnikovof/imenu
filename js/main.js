@@ -399,7 +399,7 @@ function basketCardRender() {
 //функция отправки заказа
 buttonSendOrder.addEventListener('click', sendOrder)
 function sendOrder() {
-    if (tableNumber != 'door' && tableNumber != null && tableNumber != "") {
+    if (tableNumber != 'door' && tableNumber != null && tableNumber != "" && tableNumber!='null' ) {
         if (orderListStore.length == 0) {//если заказ отправляеися впервый раз
             const orderNumber = createOrderNumber().toTg;
             let dishesListMessage = ``;
