@@ -399,7 +399,7 @@ function basketCardRender() {
 //функция отправки заказа
 buttonSendOrder.addEventListener('click', sendOrder)
 function sendOrder() {
-    if (tableNumber != 'door' && tableNumber != null && tableNumber != "" && tableNumber!='null' ) {
+    if (tableNumber != 'door' && tableNumber != null && tableNumber != "" && tableNumber != 'null') {
         if (orderListStore.length == 0) {//если заказ отправляеися впервый раз
             const orderNumber = createOrderNumber().toTg;
             let dishesListMessage = ``;
@@ -483,51 +483,47 @@ ${words[mainLang].totalCost} ${totalCostOrder}${valutaSimbol}.*
 
 //функция для отправки сообщения в тг
 async function sendMassageToTg(text, type = 'order', totalCost = '') {
-    const apiUrl = `https://api.telegram.org/bot${globalData.botToken}/sendMessage`;
     try {
-        const response = await fetch(apiUrl, {
+        fetch('https://send-message-to-tg.nikitakadilnikovof.workers.dev', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                chat_id: globalData.chatId,
-                text: text,
-                parse_mode: 'Markdown',
+                chatId: globalData.chatId,
+                messageText: text,
             }),
-        });
-        const data = await response.json();
-        console.log(data)
-        if (data.ok == true) {
-            if (type == "order") {
-                renderDialogBox('info', `${words[userLang].sendOk}`);
-                updateOrderList();
-                saveData();
-                basketBoxOpenButton.classList.remove('puls');
-                buttonSendOrder.classList.remove("active");
-                buttonOpenOrderList.classList.add('active');
-                orderNumberSpan.innerText = orderNumberGlobal.toSite;
-            }
-            if (type == 'paymentRequest') {
-                orderListStore = [];
-                basketListStore = [];
-                orderNumberGlobal = '';
-                tableNumber = '';
-                saveData();
-                renderOrderList();
-                renderMenu(categoryListDiv.querySelector('button').innerText);
-                basketCardRender();
-                orderBoxDiv.classList.remove('show')
-                buttonOpenOrderList.classList.remove('active');
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'ok') {
+                    if (type == "order") {
+                        renderDialogBox('info', `${words[userLang].sendOk}`);
+                        updateOrderList();
+                        saveData();
+                        basketBoxOpenButton.classList.remove('puls');
+                        buttonSendOrder.classList.remove("active");
+                        buttonOpenOrderList.classList.add('active');
+                        orderNumberSpan.innerText = orderNumberGlobal.toSite;
+                    }
+                    if (type == 'paymentRequest') {
+                        orderListStore = [];
+                        basketListStore = [];
+                        orderNumberGlobal = '';
+                        tableNumber = '';
+                        saveData();
+                        renderOrderList();
+                        renderMenu(categoryListDiv.querySelector('button').innerText);
+                        basketCardRender();
+                        orderBoxDiv.classList.remove('show')
+                        buttonOpenOrderList.classList.remove('active');
 
-                renderDialogBox('info',  `${words[userLang].finalMessage}${totalCost}`);
-            }
-
-        } else {
-            renderDialogBox('info', `${words[userLang].messageError}`);
-        }
-
-        return data.ok ? 'ok' : 'error';
+                        renderDialogBox('info', `${words[userLang].finalMessage}${totalCost}<br><a target="_blank" href="${globalData.feedBackLink}">${words[userLang].footerReviewText}</a>`);
+                    }
+                }else{
+                       renderDialogBox('info', `${words[userLang].messageError}`);
+                }
+            })
     }
     catch (error) {
         renderDialogBox('info', `${words[userLang].messageError}`);
@@ -734,6 +730,6 @@ orderBoxButtonClouse.addEventListener("click", () => {
 })
 
 buttonPayOrder.addEventListener("click", () => {
-    renderDialogBox("selectPayMethod",`${words[userLang].selectPayMethod}`);
+    renderDialogBox("selectPayMethod", `${words[userLang].selectPayMethod}`);
 })
 

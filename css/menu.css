@@ -3,7 +3,7 @@ body {
     background-size: cover;
     background-position: center center;
     min-height: 100vh;
-    padding-top: 100px;
+    padding-top: 130px;
     position: relative;
     padding-bottom: 100px;
 }
@@ -31,11 +31,13 @@ body {
     max-width: 100px;
     animation: prelouder 1s infinite alternate ease-in-out;
 }
-@keyframes prelouder{
-    0%{
+
+@keyframes prelouder {
+    0% {
         transform: scale(80%);
     }
-    100%{
+
+    100% {
         transform: scale(100%);
     }
 }
@@ -120,11 +122,15 @@ nav {
 
 .category-list {
     background-color: rgba(0, 0, 0, 0.37);
-    padding: 10px 20px;
+    padding: 8px 20px;
     display: flex;
     gap: 20px;
     overflow-x: auto;
-
+    position: fixed;
+    width: 100vw;
+    left: 0;
+    z-index: 7;
+    top: 78px;
 }
 
 .category-list::-webkit-scrollbar {
@@ -425,7 +431,7 @@ nav {
 
 
 .button-order {
-    flex-shrink: 0  ;
+    flex-shrink: 0;
     width: calc(100% - 40px);
     height: 48px;
     border-radius: 10px;
@@ -488,6 +494,21 @@ nav {
     text-align: center;
     line-height: 150%;
     font-size: 18px;
+}
+
+.dialog-box p a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    outline: none;
+    border-radius: 8px;
+    border: none;
+    font-size: 18px;
+    background-color: var(--color1);
+    color: var(--color2);
+    text-decoration: none;
+    margin-top: 10px;
 }
 
 .dialog-box input {

@@ -1,6 +1,6 @@
 export const globalData = {
     version:'pro',
     cafeName: 'Urfa',
-    botToken:'7220949560:AAFsKcZWU6SPwt56TX2kh3Wgp6RrgdEM9Kg',
-    chatId: '-1002357029746'
+    chatId: '-1002357029746',
+    feedBackLink: 'https://maps.app.goo.gl/T9Lsrvw6TqNyg9XSA'
 }
