@@ -102,5 +102,38 @@ export const words = {
 
 
 
+    },
+    de: {
+        basketTitle: "Warenkorb",
+        bsketBoxTotalCostText: "Gesamtkosten der Gerichte im Warenkorb:",
+        buttonSendOrder: "Senden",
+        footerReviewText: "Bitte hinterlassen Sie eine Bewertung",
+        youOrder: 'Ihre Bestellung:',
+        orderBoxTotalCostText: 'Gesamtkosten der Bestellung',
+        buttonPayOrder: 'Bezahlen',
+
+        newOrderTitle: `🔴*Neue Bestellung!*\n`,
+        userLang: `🗣*Sprache des Besuchers -*`,
+        tableNumber: `🍽*Tischnummer -*`,
+        orderNumber: `#️⃣*Bestellnummer -*`,
+        dishesList: `📃*Gerichteliste:*`,
+        totalCost: `💰*Gesamtkosten:*`,
+        addOrderTitle: `🟡*Zur Bestellung hinzufügen!*\n`,
+        oldDishes: `🟥*Vorherige Gerichte:*`,
+        newDishes: `🟨*Neue Gerichte:*`,
+        orderPay: `🟢*Bezahlung der Bestellung!*\n`,
+        payMethod: `🫰*Zahlungsmethode -* `,
+
+        // Modal-Fenster
+        cancel: "Abbrechen",
+        tableNumberError: "Die Tischnummer ist falsch eingegeben",
+        cash: "Barzahlung",
+        card: "Karte",
+        selectPayMethod: "Wählen Sie eine Zahlungsmethode",
+        sendOk: "Ihre Bestellung wurde erfolgreich gesendet.",
+        finalMessage: "Ein Kellner wird in Kürze zu Ihnen kommen. Zu zahlender Betrag -",
+        messageError: "Fehler beim Senden der Bestellung! Bitte versuchen Sie es erneut oder rufen Sie einen Kellner.",
+        requestTableNumber: "Bitte geben Sie Ihre Tischnummer ein. Sie finden sie auf dem QR-Code auf Ihrem Tisch."
+
     }
 }

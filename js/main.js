@@ -23,7 +23,6 @@ const orderBoxButtonClouse = document.querySelector('.order-box__button-clouse')
 const buttonPayOrder = document.querySelector('#buttonPayOrder');
 let tableNumber = localStorage.getItem('tableNumber');
 let orderNumberGlobal;
-console.log(tableNumber)
 
 
 function chengeSaveData() {
@@ -106,6 +105,7 @@ function renderCategoryButton() {
 
     categoryListDiv.innerHTML = "";
     const categoryList = new Set();
+    let firstCategoryNumber = null;
     for (let i = 0; i < menuStore.length; i++) {
         if (!categoryList.has(menuStore[i][`${userLang}Category`]) && menuStore[i].inStock == 'yes') {//если кнопка с данной категорией еще не создовалвсь 
             const categoryButton = document.createElement("button");
@@ -117,12 +117,15 @@ function renderCategoryButton() {
             categoryButton.addEventListener('click', () => {
                 categoryListDiv.querySelector(".active").classList.remove('active');
                 categoryButton.classList.add("active");
-                renderMenu(menuStore[i][`${userLang}Category`])
+                renderMenu(menuStore[i][`${mainLang}Category`])
             })
+            if (firstCategoryNumber == null){
+                firstCategoryNumber = i;
+            }
         }
     }
     categoryListDiv.querySelector('button').classList.add('active');
-    renderMenu(categoryListDiv.querySelector('button').innerText);
+    renderMenu(menuStore[firstCategoryNumber][`${mainLang}Category`]);
 
 }
 
@@ -130,12 +133,13 @@ function renderCategoryButton() {
 
 
 function renderMenu(category) {
-    console.log(category)
+
     const menuListDiv = document.querySelector('.menu-list');
     menuListDiv.innerHTML = "";
 
     menuStore.forEach(menuStorItem => {
-        if (menuStorItem[`${userLang}Category`] == category && menuStorItem.inStock == 'yes') {
+        if (menuStorItem[`${mainLang}Category`] == category && menuStorItem.inStock == 'yes') {
+            console.log(menuStorItem[`${userLang}Category`])
             const menuCardDiv = document.createElement("div");
             menuCardDiv.className = 'menu-cart';
             menuCardDiv.dataset.id = menuStorItem.id;
@@ -520,8 +524,8 @@ async function sendMassageToTg(text, type = 'order', totalCost = '') {
 
                         renderDialogBox('info', `${words[userLang].finalMessage}${totalCost}<br><a target="_blank" href="${globalData.feedBackLink}">${words[userLang].footerReviewText}</a>`);
                     }
-                }else{
-                       renderDialogBox('info', `${words[userLang].messageError}`);
+                } else {
+                    renderDialogBox('info', `${words[userLang].messageError}`);
                 }
             })
     }
